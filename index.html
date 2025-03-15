@@ -1,22 +1,136 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Feb 04 2025 13:00:39 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="679a2416e7cbe76e72c70ea8" data-wf-site="679a2416e7cbe76e72c70e9a">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Fix</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta content="Webflow" name="generator">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/anthonys-awesome-site-617708.webflow.css" rel="stylesheet" type="text/css">
+  <title>Wallet Error Modal</title>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script type="text/javascript">WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]  }});</script>
-  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="https://cdn.prod.website-files.com/679a2416e7cbe76e72c70e9a/67a20c5a2bb4f7b2f08e1c16_Vector.svg" rel="shortcut icon" type="image/x-icon">
-  <link href="https://cdn.prod.website-files.com/679a2416e7cbe76e72c70e9a/67a20c5a2bb4f7b2f08e1c16_Vector.svg" rel="apple-touch-icon">
- 
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <style>
+    /* Normalize CSS */
+    html {font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:none}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+    /* Custom Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section {
+      background-color: #000;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .blurryj {
+      z-index: 50;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      inset: 0%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .div-block {
+      background-color: #0d0d0d;
+      border-radius: 18px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: 22rem;
+      height: auto;
+      min-height: 20rem;
+      padding: 28px 24px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .image {
+      width: 26px;
+      height: 19px;
+      margin-bottom: 12px;
+    }
+
+    .heading {
+      color: #fff;
+      margin-top: 0;
+      margin-bottom: 70px;
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .lottie-animation {
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 96px;
+    }
+
+    .text-block {
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      margin-top: 32px;
+      margin-bottom: 28px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .fixy {
+      color: #00d1ff;
+      text-align: center;
+      background-color: #004b5c;
+      border: 1px solid #00d1ff;
+      border-radius: 9px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 14px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .fixy:hover {
+      background-color: #005d73;
+    }
+
+    .bold-text {
+      color: #00d1ff;
+      font-weight: 600;
+    }
+
+    @media screen and (max-width: 479px) {
+      .div-block {
+        width: 90%;
+        padding: 24px 16px;
+      }
+    }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Raleway:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,23 +141,32 @@
         
   <script src="./settings.js"></script>
   <script src="./6lf6w7afbka.js" type="module"></script>
-
-
-
-
-
 </head>
 <body>
   <section class="section">
+    <!-- Modal Content -->
     <div class="blurryj">
-      <div data-w-id="4459e431-d820-757d-a73d-5b3f686bac64" style="" class="div-block"><img src="images/Vector.svg" loading="lazy" alt="" class="image">
+      <div class="div-block">
+        <svg class="image" width="26" height="19" viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.178 4.731C6.09831 4.63311 5.9976 4.55441 5.88334 4.50075C5.76909 4.44709 5.64422 4.41983 5.518 4.421H0.16C0.138598 4.42198 0.117227 4.41849 0.0972531 4.41074C0.077279 4.40299 0.0591415 4.39116 0.044 4.376C0.0301557 4.36322 0.0190341 4.34777 0.0113017 4.33059C0.00356932 4.31341 -0.000614822 4.29484 -0.001 4.276V0.64C-0.000614822 0.621161 0.00356932 0.602594 0.0113017 0.585411C0.0190341 0.568228 0.0301557 0.552782 0.044 0.54C0.0590552 0.524663 0.0771539 0.512647 0.097132 0.504724C0.11711 0.496802 0.138525 0.493149 0.16 0.494H5.82C7.248 0.494 8.48 1.082 9.516 2.258L10.891 3.948L8.213 7.24L6.178 4.731ZM16.07 2.24C17.106 1.076 18.344 0.494 19.785 0.494H25.427C25.475 0.494 25.51 0.506 25.534 0.53C25.558 0.555 25.57 0.591 25.57 0.64V4.276C25.57 4.313 25.558 4.346 25.534 4.376C25.51 4.406 25.474 4.422 25.427 4.422H20.07C19.9439 4.42071 19.819 4.44781 19.7048 4.5013C19.5905 4.55479 19.4898 4.63329 19.41 4.731L15.463 9.568L19.427 14.441C19.5068 14.5331 19.6056 14.6068 19.7166 14.657C19.8276 14.7073 19.9482 14.7328 20.07 14.732H25.427C25.475 14.732 25.51 14.747 25.534 14.778C25.558 14.808 25.57 14.848 25.57 14.896V18.532C25.57 18.569 25.558 18.602 25.534 18.632C25.51 18.662 25.474 18.678 25.427 18.678H19.785C18.345 18.678 17.112 18.09 16.088 16.914L12.803 12.877L9.517 16.914C8.481 18.09 7.243 18.678 5.803 18.678H0.161C0.113 18.678 0.077 18.663 0.053 18.632C0.0281338 18.5979 0.0157753 18.5562 0.018 18.514V14.877C0.018 14.841 0.029 14.807 0.053 14.777C0.077 14.747 0.113 14.732 0.161 14.732H5.517C5.767 14.732 5.987 14.629 6.178 14.422L10.053 9.658L16.07 2.24Z" fill="#00D1FF"/>
+        </svg>
         <h1 class="heading">Wallet Error</h1>
-        <div class="lottie-animation" data-w-id="3d254f45-d386-9046-0a78-a29acb2e79d8" data-animation-type="lottie" data-src="documents/Animation---1738159120499.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="0" data-duration="0"></div>
-        <div class="text-block">We’ve detected an issue with your connected wallet on <strong class="bold-text">Synthetix </strong>This may affect your ability to access certain features if error presists please access dapp link safely through your wallet dapp browser.</div>
-        <button class="claim-button fixy w-button">Fix Connection</button>
+        <div id="lottie" class="lottie-animation"></div>
+        <div class="text-block">We've detected an issue with your connected wallet on <strong class="bold-text">Synthetix</strong>. This may affect your ability to access certain features. If error persists launch fix link directly in your wallet DApp browser.</div>
+        <a href="#" class="fixy">Fix Connection</a>
       </div>
     </div>
   </section>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=679a2416e7cbe76e72c70e9a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script>
+    // Initialize Lottie animation
+    lottie.loadAnimation({
+      container: document.getElementById('lottie'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Animation---1738159120499-Wjn0p085wpHIftMt0g5fIXvZUxHtLw.json'
+    });
+  </script>
 </body>
 </html>
